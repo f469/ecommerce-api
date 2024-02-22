@@ -1,0 +1,20 @@
+parameters:
+    paths:
+        - ./src
+    exclude_files:
+        - '#.*test.*#'
+    layers:
+        -   name: Domain
+            collectors:
+                - type: className
+                  regex: .*Domain\/*
+        -   name: UseCase
+            collectors:
+                - type: className
+                  regex: .*UseCase\/*
+    ruleset:
+        Domain:
+            - Domain
+        UseCase:
+            - UseCase
+            - Domain

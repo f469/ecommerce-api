@@ -15,6 +15,7 @@
         "symfony/yaml": "7.0.*"
     },
     "require-dev": {
+        "qossmic/deptrac-shim": "^1.0"
     },
     "config": {
         "allow-plugins": {
