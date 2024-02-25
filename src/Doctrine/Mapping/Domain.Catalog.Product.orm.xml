@@ -1,7 +1,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
 
     <entity name="App\Domain\Catalog\Product">
-        <id name="reference" type="string" />
+        <id name="id" type="string" />
+        <field name="reference" type="string" />
         <field name="name" type="string" />
         <field name="description" type="string" />
         <field name="price" type="float" />

@@ -4,6 +4,7 @@ namespace App\Domain\Order;
 
 class Cart
 {
+    private string $id;
     /**
      * @var array<CartLine>
      */
