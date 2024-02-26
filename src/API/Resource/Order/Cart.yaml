@@ -1,0 +1,7 @@
+resources:
+  App\Domain\Order\Cart:
+    operations:
+      ApiPlatform\Metadata\GetCollection: ~
+      ApiPlatform\Metadata\Get:
+        provider: App\API\State\Order\CartProvider
+        output: App\UseCase\Order\ViewCart

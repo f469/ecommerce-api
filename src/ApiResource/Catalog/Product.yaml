@@ -1,5 +1,0 @@
-resources:
-  App\Domain\Catalog\Product:
-    operations:
-      ApiPlatform\Metadata\GetCollection: ~
-      ApiPlatform\Metadata\Get: ~

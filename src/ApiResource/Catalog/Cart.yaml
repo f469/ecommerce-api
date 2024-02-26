@@ -1,4 +1,0 @@
-resources:
-  App\Domain\Order\Cart:
-    operations:
-      ApiPlatform\Metadata\Get: ~
