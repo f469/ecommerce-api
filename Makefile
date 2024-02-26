@@ -21,6 +21,8 @@ migrate: vendor
 	$(console) doctrine:migration:migrate --no-interaction
 generate-migration: vendor	
 	$(console) make:migration --no-interaction
+validate-schema: vendor
+	$(console) doctrine:schema:validate
 
 # Coding Standards
 coding-standard: vendor
