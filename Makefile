@@ -26,7 +26,7 @@ validate-schema: vendor
 
 # Coding Standards
 coding-standard: vendor
-	$(php-container) vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php
+	$(php-container) vendor/bin/php-cs-fixer fix src
 
 # Static analysis
 static-analysis: analysis dependance-violation
