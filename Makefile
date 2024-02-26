@@ -31,7 +31,7 @@ coding-standard: vendor
 # Static analysis
 static-analysis: analysis dependance-violation
 analysis: vendor
-	$(php-container) vendor/bin/phpstan analyse -c phpstan.neon
+	$(php-container) vendor/bin/phpstan analyse -c phpstan.dist.neon
 dependance-violation: vendor
 	$(php-container) vendor/bin/deptrac analyse
 
