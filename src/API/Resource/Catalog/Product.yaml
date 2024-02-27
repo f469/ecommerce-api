@@ -1,0 +1,7 @@
+resources:
+  App\Domain\Catalog\Product:
+    operations:
+      ApiPlatform\Metadata\GetCollection: ~
+      ApiPlatform\Metadata\Get:
+        provider: App\API\State\Catalog\ProductProvider
+        output: App\UseCase\Catalog\ViewProduct

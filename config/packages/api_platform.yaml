@@ -4,7 +4,7 @@ api_platform:
     version: 1.0.0
     mapping:
         paths:
-            - '%kernel.project_dir%/src/ApiResource'
+            - '%kernel.project_dir%/src/API/Resource'
     formats:
         jsonld: ['application/ld+json']
     docs_formats:

@@ -1,5 +1,0 @@
-resources:
-  App\Domain\Order\Order:
-    operations:
-      ApiPlatform\Metadata\GetCollection: ~
-      ApiPlatform\Metadata\Get: ~

@@ -1,0 +1,7 @@
+resources:
+  App\Domain\Order\Order:
+    operations:
+      ApiPlatform\Metadata\GetCollection: ~
+      ApiPlatform\Metadata\Get:
+        provider: App\API\State\Order\OrderProvider
+        output: App\UseCase\Order\ViewOrder
