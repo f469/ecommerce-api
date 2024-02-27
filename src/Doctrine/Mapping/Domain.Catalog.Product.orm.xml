@@ -5,8 +5,8 @@
         <field name="reference" type="string" />
         <field name="name" type="string" />
         <field name="description" type="string" />
-        <field name="price" type="float" />
-        <field name="vat" type="float" />
+        <field name="price" type="amount" precision="10" scale="2"/>
+        <field name="vat" type="amount" precision="10" scale="2"/>
     </entity>
 
 </doctrine-mapping>
