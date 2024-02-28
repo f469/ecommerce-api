@@ -24,4 +24,9 @@ class AmountType extends DecimalType
     {
         return self::NAME; // modify to match your constant name
     }
+
+    public function requiresSQLCommentHint(AbstractPlatform $platform)
+    {
+        return true;
+    }
 }
