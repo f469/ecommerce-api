@@ -4,4 +4,4 @@ resources:
       ApiPlatform\Metadata\GetCollection: ~
       ApiPlatform\Metadata\Get:
         provider: App\API\State\Order\CartProvider
-        output: App\UseCase\Order\ViewCart
+        #output: App\Domain\Order\ViewCart
