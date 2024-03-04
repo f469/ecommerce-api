@@ -12,12 +12,23 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=user
       - POSTGRES_DB=db
-
+  database_test:
+    image: postgres:16
+    restart: always
+    ports:
+      - 5433:5432
+    volumes:
+      - ~/postgres_test:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=user
+      - POSTGRES_DB=db_test
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin4_container
     depends_on:
       - database
+      - database_test
     ports:
       - "8888:80"
     restart: always
@@ -34,6 +45,7 @@ services:
       context: ./docker/php-fpm
     depends_on:
       - database
+      - database_test
     volumes:
       - ./:/var/www
     environment:
