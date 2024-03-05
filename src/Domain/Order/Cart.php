@@ -21,4 +21,11 @@ class Cart
     {
         $this->lines[] = $cartLine;
     }
+
+    public function data(): CartDTO
+    {
+        return new CartDTO(
+            $this->id
+        );
+    }
 }

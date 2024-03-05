@@ -4,16 +4,20 @@ namespace App\API\State\Order;
 
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProviderInterface;
-use App\UseCase\Order\ViewOrder;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 class OrderProvider implements ProviderInterface
 {
+    public function __construct(
+        #[Autowire('api_platform.doctrine.orm.state.item_provider')]
+        private ProviderInterface $itemProvider,
+    ) {
+    }
+
     public function provide(Operation $operation, array $uriVariables = [], array $context = []): object|array|null
     {
-        // dummy
-        $tmp = new ViewOrder();
-        $tmp->id = 'id';
+        $order = $this->itemProvider->provide($operation, $uriVariables, $context);
 
-        return $tmp;
+        return null != $order ? $order->data() : null;
     }
 }

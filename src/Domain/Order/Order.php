@@ -20,4 +20,13 @@ class Order
         $this->date = $date;
         $this->payment = $payment;
     }
+
+    public function data(): OrderDTO
+    {
+        return new OrderDTO(
+            $this->id,
+            $this->cart,
+            $this->date
+        );
+    }
 }

@@ -15,6 +15,7 @@ parameters:
     ruleset:
         Domain:
             - Domain
-        UseCase:
-            - UseCase
+        API:
+            - Domain
+        Doctrine:
             - Domain
