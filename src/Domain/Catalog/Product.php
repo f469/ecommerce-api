@@ -3,6 +3,7 @@
 namespace App\Domain\Catalog;
 
 use App\Domain\Money\Amount;
+use Symfony\Component\Uid\Uuid;
 
 class Product
 {
@@ -19,23 +20,31 @@ class Product
      * @param float $vat
      */
     public function __construct(
-        string $reference,
-        ?string $name,
-        ?string $description,
-        string|float $price,
-        string|float $vat
+        ProductDTO $productDTO
     ) {
-        $this->id = 'dummy';
+        $this->id = Uuid::v7();
 
-        $this->reference = $reference;
-        $this->name = $name;
-        $this->description = $description;
-        $this->price = new Amount($price);
-        $this->vat = new Amount($vat);
+        $this->reference = $productDTO->getReference();
+        $this->name = $productDTO->getName();
+        $this->description = $productDTO->getDescription();
+        $this->price = new Amount($productDTO->getPrice());
+        $this->vat = new Amount($productDTO->getVat());
     }
 
     public function computeVAT(): Amount
     {
         return $this->price->mul($this->vat);
+    }
+
+    public function data(): ProductDTO
+    {
+        return new ProductDTO(
+            $this->id,
+            $this->reference,
+            $this->name,
+            $this->description,
+            $this->price->toFloat(),
+            $this->vat->toFloat()
+        );
     }
 }

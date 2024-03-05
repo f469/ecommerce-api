@@ -23,6 +23,8 @@ generate-migration: vendor
 	$(console) make:migration --no-interaction
 validate-schema: vendor
 	$(console) doctrine:schema:validate
+fixtures:
+	$(console) doctrine:fixtures:load
 # Database - test
 set-db-test: vendor
 	$(console) doctrine:database:drop --env=test --force --if-exists

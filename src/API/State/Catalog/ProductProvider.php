@@ -4,21 +4,23 @@ namespace App\API\State\Catalog;
 
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProviderInterface;
-use App\UseCase\Catalog\ViewProduct;
+use App\Domain\Catalog\ProductDTO;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 class ProductProvider implements ProviderInterface
 {
-    public function provide(Operation $operation, array $uriVariables = [], array $context = []): object|array|null
-    {
-        // dummy
-        $tmp = new ViewProduct();
-        $tmp->id = 'id';
-        $tmp->price = 00.00;
-        $tmp->name = 'name';
-        $tmp->vat = 00.00;
-        $tmp->reference = 'ref';
-        $tmp->description = 'desc';
+    public function __construct(
+        #[Autowire('api_platform.doctrine.orm.state.item_provider')]
+        private ProviderInterface $itemProvider,
+    ) {}
 
-        return $tmp;
+    public function provide(
+        Operation $operation,
+        array $uriVariables = [],
+        array $context = []
+    ): object|array|null
+    {
+        $product = $this->itemProvider->provide($operation, $uriVariables, $context);
+        return $product != null ? $product->data() : null;
     }
 }

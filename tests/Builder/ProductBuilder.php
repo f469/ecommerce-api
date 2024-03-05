@@ -3,6 +3,7 @@
 namespace App\Tests\Builder;
 
 use App\Domain\Catalog\Product;
+use App\Domain\Catalog\ProductDTO;
 use App\Domain\Money\Amount;
 
 class ProductBuilder
@@ -35,11 +36,13 @@ class ProductBuilder
 
     public function build(): Product {
         return new Product(
-            'reference',
-            'description',
-            'name',
-            50.00,
-            0.02
+            new ProductDTO(
+                null,
+                'reference',
+                'description',
+                'name',
+                50.00,
+                0.02)
         );
     }
 }
