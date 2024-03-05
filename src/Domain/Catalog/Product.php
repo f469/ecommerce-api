@@ -9,16 +9,12 @@ class Product
 {
     private string $id;
     private string $reference;
-    private string|null $name;
-    private string|null $description;
-
+    private ?string $name;
+    private ?string $description;
     private Amount $price;
     private Amount $vat;
+    private ProductCategory $category;
 
-    /**
-     * @param float $price
-     * @param float $vat
-     */
     public function __construct(
         ProductDTO $productDTO
     ) {
@@ -46,5 +42,10 @@ class Product
             $this->price->toFloat(),
             $this->vat->toFloat()
         );
+    }
+
+    public function addToCategory(ProductCategory $category)
+    {
+        $this->category = $category;
     }
 }

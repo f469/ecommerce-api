@@ -2,27 +2,17 @@
 
 namespace App\Domain\Catalog;
 
-use App\Domain\Money\Amount;
-
 class ProductDTO
 {
-    private string|null $id;
+    private ?string $id;
     private string $reference;
-    private string|null $name;
-    private string|null $description;
+    private ?string $name;
+    private ?string $description;
     private float $price;
     private float $vat;
 
-    /**
-     * @param string $id
-     * @param string $reference
-     * @param string|null $name
-     * @param string|null $description
-     * @param float $price
-     * @param float $vat
-     */
     public function __construct(
-        string|null $id,
+        ?string $id,
         string $reference,
         ?string $name,
         ?string $description,
