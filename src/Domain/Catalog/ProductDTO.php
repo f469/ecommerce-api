@@ -10,6 +10,7 @@ class ProductDTO
     private ?string $description;
     private float $price;
     private float $vat;
+    private string $category;
 
     public function __construct(
         ?string $id,
@@ -17,7 +18,8 @@ class ProductDTO
         ?string $name,
         ?string $description,
         float $price,
-        float $vat
+        float $vat,
+        string $category
     ) {
         $this->id = $id;
         $this->reference = $reference;
@@ -25,6 +27,7 @@ class ProductDTO
         $this->description = $description;
         $this->price = $price;
         $this->vat = $vat;
+        $this->category = $category;
     }
 
     public function getId(): string
@@ -55,5 +58,15 @@ class ProductDTO
     public function getVat(): float
     {
         return $this->vat;
+    }
+
+    public function getCategory(): string
+    {
+        return $this->category;
+    }
+
+    public function setCategory(string $category): void
+    {
+        $this->category = $category;
     }
 }

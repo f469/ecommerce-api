@@ -4,6 +4,8 @@ namespace App\API\State\Order;
 
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProviderInterface;
+use App\Domain\Order\Cart;
+use App\Domain\Order\CartDTO;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 class CartProvider implements ProviderInterface
@@ -14,8 +16,14 @@ class CartProvider implements ProviderInterface
     ) {
     }
 
-    public function provide(Operation $operation, array $uriVariables = [], array $context = []): object|array|null
-    {
+    public function provide(
+        Operation $operation,
+        array $uriVariables = [],
+        array $context = []
+    ): ?CartDTO {
+        /**
+         * @var Cart $cart
+         */
         $cart = $this->itemProvider->provide($operation, $uriVariables, $context);
 
         return null != $cart ? $cart->data() : null;

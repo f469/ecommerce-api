@@ -4,6 +4,8 @@ namespace App\API\State\Order;
 
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProviderInterface;
+use App\Domain\Order\Order;
+use App\Domain\Order\OrderDTO;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 class OrderProvider implements ProviderInterface
@@ -14,8 +16,14 @@ class OrderProvider implements ProviderInterface
     ) {
     }
 
-    public function provide(Operation $operation, array $uriVariables = [], array $context = []): object|array|null
-    {
+    public function provide(
+        Operation $operation,
+        array $uriVariables = [],
+        array $context = []
+    ): ?OrderDTO {
+        /**
+         * @var Order $order
+         */
         $order = $this->itemProvider->provide($operation, $uriVariables, $context);
 
         return null != $order ? $order->data() : null;

@@ -8,8 +8,6 @@ use Doctrine\DBAL\Types\DecimalType;
 
 class AmountType extends DecimalType
 {
-    public const string NAME = 'amount';
-
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         return new Amount($value);
@@ -22,7 +20,7 @@ class AmountType extends DecimalType
 
     public function getName()
     {
-        return self::NAME; // modify to match your constant name
+        return 'amount'; // modify to match your constant name
     }
 
     public function requiresSQLCommentHint(AbstractPlatform $platform)

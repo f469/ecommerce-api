@@ -10,7 +10,8 @@ class AmountTest extends TestCase
     /**
      * @dataProvider stringAmountProvider
      */
-    public function testToString($input, $output): void {
+    public function testToString($input, $output): void
+    {
         $amount = new Amount($input);
         $this->assertEquals($output, $amount->toString());
     }

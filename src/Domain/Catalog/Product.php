@@ -27,9 +27,14 @@ class Product
         $this->vat = new Amount($productDTO->getVat());
     }
 
-    public function computeVAT(): Amount
+    public function computePrice(int $quantity): Amount
     {
-        return $this->price->mul($this->vat);
+        return $this->price->mul(new Amount($quantity));
+    }
+
+    public function computeVAT(int $quantity): Amount
+    {
+        return $this->price->mul($this->vat)->mul(new Amount($quantity));
     }
 
     public function data(): ProductDTO
@@ -40,7 +45,8 @@ class Product
             $this->name,
             $this->description,
             $this->price->toFloat(),
-            $this->vat->toFloat()
+            $this->vat->toFloat(),
+            $this->category->data()->getName()
         );
     }
 

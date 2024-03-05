@@ -2,6 +2,7 @@
 
 namespace App\Domain\Order;
 
+use App\Domain\Money\Amount;
 use Symfony\Component\Uid\Uuid;
 
 class Cart
@@ -20,6 +21,36 @@ class Cart
     public function addLine(CartLine $cartLine): void
     {
         $this->lines[] = $cartLine;
+    }
+
+    public function computePriceSum(): Amount
+    {
+        $sum = new Amount(0);
+        foreach ($this->lines as $line) {
+            $sum = $sum->add($line->computePrice());
+        }
+
+        return $sum;
+    }
+
+    public function computeVatSum(): Amount
+    {
+        $sum = new Amount(0);
+        foreach ($this->lines as $line) {
+            $sum = $sum->add($line->computeVat());
+        }
+
+        return $sum;
+    }
+
+    public function computePriceWithVatSum(): Amount
+    {
+        $sum = new Amount(0);
+        foreach ($this->lines as $line) {
+            $sum = $sum->add($line->computePriceWithVat());
+        }
+
+        return $sum;
     }
 
     public function data(): CartDTO
