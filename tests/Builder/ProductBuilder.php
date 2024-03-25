@@ -7,11 +7,11 @@ use App\Domain\Catalog\ProductDTO;
 
 class ProductBuilder
 {
-    private ?string $reference = 'reference';
-    private ?string $name = null;
+    private string $reference = 'reference';
+    private string $name = 'name';
     private ?string $description = null;
-    private ?string $price = '30.00';
-    private ?string $vat = '0.20';
+    private string $price = '30.00';
+    private string $vat = '0.20';
 
     public static function create(): self
     {
@@ -59,11 +59,10 @@ class ProductBuilder
             new ProductDTO(
                 null,
                 $this->reference,
-                $this->description,
                 $this->name,
+                $this->description,
                 (float) $this->price,
                 (float) $this->vat,
-                'category'
             )
         );
     }

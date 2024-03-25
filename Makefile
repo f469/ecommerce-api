@@ -30,7 +30,7 @@ set-db-test: vendor
 	$(console) doctrine:database:drop --env=test --force --if-exists
 	$(console) doctrine:database:create --env=test
 	$(console) doctrine:schema:update --env=test --dump-sql --force
-	$(console) doctrine:fixtures:load --env=test
+	$(console) doctrine:fixtures:load --env=test --no-interaction
 
 # Coding Standards
 coding-standard: vendor
@@ -48,7 +48,7 @@ unit-tests: vendor
 	$(php-container) bin/phpunit
 
 full-setup-and-checking: full-setup full-checking
-full-setup: dependencies clear-cache set-database
+full-setup: dependencies clear-cache set-database set-db-test
 full-checking: clear-cache coding-standard static-analysis unit-tests
 
 # Debug

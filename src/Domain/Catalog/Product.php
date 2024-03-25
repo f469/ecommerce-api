@@ -13,7 +13,6 @@ class Product
     private ?string $description;
     private Amount $price;
     private Amount $vat;
-    private ProductCategory $category;
 
     public function __construct(
         ProductDTO $productDTO
@@ -46,12 +45,11 @@ class Product
             $this->description,
             $this->price->toFloat(),
             $this->vat->toFloat(),
-            $this->category->data()->getName()
         );
     }
 
-    public function addToCategory(ProductCategory $category)
+    public function getId(): string
     {
-        $this->category = $category;
+        return $this->id;
     }
 }

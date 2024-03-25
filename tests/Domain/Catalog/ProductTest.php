@@ -29,7 +29,6 @@ class ProductTest extends TestCase
                 'des',
                 $price,
                 $vat,
-                'category'
             )
         );
 
