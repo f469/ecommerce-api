@@ -3,6 +3,7 @@
 namespace App\Domain\Order;
 
 use App\Domain\Catalog\Product;
+use App\Domain\Money\Amount;
 use Symfony\Component\Uid\Uuid;
 
 class CartLine
@@ -27,5 +28,25 @@ class CartLine
     public function decreaseQuantity(): void
     {
         $this->quantity = $this->quantity - 1;
+    }
+
+    public function computePrice(): Amount
+    {
+        return $this->product->computePrice($this->quantity);
+    }
+
+    public function computeVat(): Amount
+    {
+        return $this->product->computeVAT($this->quantity);
+    }
+
+    public function computePriceWithVat(): Amount
+    {
+        return $this->computePrice()->add($this->computeVat());
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
     }
 }

@@ -17,4 +17,9 @@ class Payment
         $this->type = $type;
         $this->date = new \DateTime();
     }
+
+    public function data(): PaymentDTO
+    {
+        return new PaymentDTO($this->id, $this->date, $this->type);
+    }
 }

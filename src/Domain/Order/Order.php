@@ -26,7 +26,8 @@ class Order
         return new OrderDTO(
             $this->id,
             $this->cart,
-            $this->date
+            $this->date,
+            $this->payment->data()->getId()
         );
     }
 }

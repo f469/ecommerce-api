@@ -34,7 +34,7 @@ set-db-test: vendor
 
 # Coding Standards
 coding-standard: vendor
-	$(php-container) vendor/bin/php-cs-fixer fix src
+	$(php-container) vendor/bin/php-cs-fixer fix src && vendor/bin/php-cs-fixer fix tests
 
 # Static analysis
 static-analysis: analysis dependance-violation

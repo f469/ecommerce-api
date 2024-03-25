@@ -21,20 +21,17 @@ class Amount
 
     public function toFloat(): float
     {
-        if (is_float($this->value)) {
-            return $this->value;
-        }
-
-        return (float) $this->value;
+        return $this->value;
     }
 
-    public function toString(): float
+    public function toString(): string
     {
-        if (is_string($this->value)) {
-            return $this->value;
-        }
-
         return (string) $this->value;
+    }
+
+    public function add(self $value): self
+    {
+        return new Amount((float) $this->value + $value->toFloat());
     }
 
     public function mul(self $value): self
