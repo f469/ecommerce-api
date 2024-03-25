@@ -17,7 +17,7 @@ Access the API documentation here : http://localhost/
 
 Run tests, static analysis and cs fix
 
-``` make checking ```
+``` make full-checking ```
 
 See the Makefile for other commands. 
 In any cases, you can run your command from the root directory
