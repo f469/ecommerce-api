@@ -7,7 +7,7 @@ use App\Utils\UuidGenerator;
 
 class CartBuilder
 {
-    private array $lines;
+    private array $lines = [];
 
     public static function create(): self
     {

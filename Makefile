@@ -13,7 +13,7 @@ clear-cache: vendor
 	$(console) cache:clear
 
 # Database
-set-database: create-db migrate
+set-database: create-db migrate fixtures
 create-db: vendor
 	$(console) doctrine:database:drop --force --if-exists
 	$(console) doctrine:database:create
@@ -24,7 +24,7 @@ generate-migration: vendor
 validate-schema: vendor
 	$(console) doctrine:schema:validate
 fixtures:
-	$(console) doctrine:fixtures:load
+	$(console) doctrine:fixtures:load --no-interaction
 # Database - test
 set-db-test: vendor
 	$(console) doctrine:database:drop --env=test --force --if-exists

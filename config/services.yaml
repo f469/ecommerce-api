@@ -31,7 +31,12 @@ services:
         resource: '%kernel.project_dir%/tests/DataFixtures'
         tags: [ doctrine.fixture.orm ]
 
+    # API
     App\API\State\Catalog\ProductProvider:
+        arguments:
+            $itemProvider: '@api_platform.doctrine.orm.state.item_provider'
+        tags: [ 'api_platform.state_provider' ]
+    App\API\State\Order\OrderProvider:
         arguments:
             $itemProvider: '@api_platform.doctrine.orm.state.item_provider'
         tags: [ 'api_platform.state_provider' ]

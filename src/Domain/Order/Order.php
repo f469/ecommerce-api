@@ -34,4 +34,9 @@ class Order
             $this->payment->data()->getId()
         );
     }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
 }
