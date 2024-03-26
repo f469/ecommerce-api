@@ -4,6 +4,7 @@ namespace App\Tests\Builder;
 
 use App\Domain\Catalog\Product;
 use App\Domain\Order\CartLine;
+use App\Utils\UuidGenerator;
 
 class CartLineBuilder
 {
@@ -33,7 +34,8 @@ class CartLineBuilder
     {
         return new CartLine(
             null === $this->product ? ProductBuilder::create()->build() : $this->product,
-            $this->quantity
+            $this->quantity,
+            new UuidGenerator()
         );
     }
 }

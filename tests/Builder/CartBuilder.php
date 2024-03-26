@@ -3,6 +3,7 @@
 namespace App\Tests\Builder;
 
 use App\Domain\Order\Cart;
+use App\Utils\UuidGenerator;
 
 class CartBuilder
 {
@@ -24,7 +25,7 @@ class CartBuilder
 
     public function build(): Cart
     {
-        $cart = new Cart();
+        $cart = new Cart(new UuidGenerator());
         foreach ($this->lines as $line) {
             $cart->addLine($line);
         }

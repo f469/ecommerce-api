@@ -4,6 +4,7 @@ namespace App\Tests\Domain\Catalog;
 
 use App\Domain\Catalog\Product;
 use App\Domain\Catalog\ProductDTO;
+use App\Utils\UuidGenerator;
 use PHPUnit\Framework\TestCase;
 
 class ProductTest extends TestCase
@@ -29,7 +30,8 @@ class ProductTest extends TestCase
                 'des',
                 $price,
                 $vat,
-            )
+            ),
+            new UuidGenerator()
         );
 
         $this->assertEquals($result, $product->computeVAT(1)->toFloat());

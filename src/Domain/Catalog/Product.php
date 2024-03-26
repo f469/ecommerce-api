@@ -2,8 +2,8 @@
 
 namespace App\Domain\Catalog;
 
+use App\Domain\Id;
 use App\Domain\Money\Amount;
-use Symfony\Component\Uid\Uuid;
 
 class Product
 {
@@ -15,9 +15,10 @@ class Product
     private Amount $vat;
 
     public function __construct(
-        ProductDTO $productDTO
+        ProductDTO $productDTO,
+        Id $id
     ) {
-        $this->id = Uuid::v7();
+        $this->id = $id->generate();
 
         $this->reference = $productDTO->getReference();
         $this->name = $productDTO->getName();

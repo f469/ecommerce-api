@@ -3,8 +3,8 @@
 namespace App\Domain\Order;
 
 use App\Domain\Catalog\Product;
+use App\Domain\Id;
 use App\Domain\Money\Amount;
-use Symfony\Component\Uid\Uuid;
 
 class CartLine
 {
@@ -12,9 +12,12 @@ class CartLine
     private Product $product;
     private int $quantity;
 
-    public function __construct(Product $product, int $quantity)
-    {
-        $this->id = Uuid::v7();
+    public function __construct(
+        Product $product,
+        int $quantity,
+        Id $id
+    ) {
+        $this->id = $id->generate();
 
         $this->product = $product;
         $this->quantity = $quantity;

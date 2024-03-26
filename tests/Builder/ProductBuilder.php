@@ -4,6 +4,7 @@ namespace App\Tests\Builder;
 
 use App\Domain\Catalog\Product;
 use App\Domain\Catalog\ProductDTO;
+use App\Utils\UuidGenerator;
 
 class ProductBuilder
 {
@@ -63,7 +64,8 @@ class ProductBuilder
                 $this->description,
                 (float) $this->price,
                 (float) $this->vat,
-            )
+            ),
+            new UuidGenerator()
         );
     }
 }

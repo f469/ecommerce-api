@@ -2,8 +2,8 @@
 
 namespace App\Domain\Order;
 
+use App\Domain\Id;
 use App\Domain\Payment\Payment;
-use Symfony\Component\Uid\Uuid;
 
 class Order
 {
@@ -12,9 +12,13 @@ class Order
     private \DateTime $date;
     private Payment $payment;
 
-    public function __construct(Cart $cart, \DateTime $date, Payment $payment)
-    {
-        $this->id = Uuid::v7();
+    public function __construct(
+        Cart $cart,
+        \DateTime $date,
+        Payment $payment,
+        Id $id
+    ) {
+        $this->id = $id->generate();
 
         $this->cart = $cart;
         $this->date = $date;

@@ -4,18 +4,45 @@ parameters:
     exclude_files:
         - '#.*test.*#'
     layers:
+        # Domain -> only POPO
         -   name: Domain
             collectors:
                 - type: className
                   regex: .*Domain\/*
-        -   name: UseCase
+        # App -> application code : using Domain to build the web api
+        -   name: API
             collectors:
                 - type: className
-                  regex: .*UseCase\/*
+                  regex: .*API\/*
+        -   name: Doctrine
+            collectors:
+                - type: className
+                  regex: .*Doctrine\/*
+        - name: Utils
+          collectors:
+              - type: className
+                regex: .*Utils\/*
+        # vendor
+        - name: Symfony
+          collectors:
+              - type: className
+                regex: .*Symfony\/*
+        - name: ApiPlatform
+          collectors:
+              - type: className
+                regex: .*ApiPlatform\/*
     ruleset:
         Domain:
             - Domain
         API:
             - Domain
+            - ApiPlatform
+            - Symfony
+            - API
+        Utils:
+            - Domain
+            - Symfony
+            - Utils
         Doctrine:
             - Domain
+            - Doctrine

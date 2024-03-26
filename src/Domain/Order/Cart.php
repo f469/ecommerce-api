@@ -2,8 +2,8 @@
 
 namespace App\Domain\Order;
 
+use App\Domain\Id;
 use App\Domain\Money\Amount;
-use Symfony\Component\Uid\Uuid;
 
 class Cart
 {
@@ -13,9 +13,10 @@ class Cart
      */
     private array $lines;
 
-    public function __construct()
-    {
-        $this->id = Uuid::v7();
+    public function __construct(
+        Id $id
+    ) {
+        $this->id = $id->generate();
     }
 
     public function addLine(CartLine $cartLine): void

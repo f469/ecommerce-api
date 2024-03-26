@@ -2,7 +2,7 @@
 
 namespace App\Domain\Payment;
 
-use Symfony\Component\Uid\Uuid;
+use App\Domain\Id;
 
 class Payment
 {
@@ -10,9 +10,11 @@ class Payment
     private \DateTime $date;
     private Type $type;
 
-    public function __construct(Type $type)
-    {
-        $this->id = Uuid::v7();
+    public function __construct(
+        Type $type,
+        Id $id
+    ) {
+        $this->id = $id->generate();
 
         $this->type = $type;
         $this->date = new \DateTime();

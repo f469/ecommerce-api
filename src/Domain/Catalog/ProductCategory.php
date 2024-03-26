@@ -2,7 +2,7 @@
 
 namespace App\Domain\Catalog;
 
-use Symfony\Component\Uid\Uuid;
+use App\Domain\Id;
 
 class ProductCategory
 {
@@ -10,9 +10,12 @@ class ProductCategory
     private string $name;
     private ?string $description;
 
-    public function __construct(string $name, ?string $description)
-    {
-        $this->id = Uuid::v7();
+    public function __construct(
+        string $name,
+        ?string $description,
+        Id $id
+    ) {
+        $this->id = $id->generate();
 
         $this->name = $name;
         $this->description = $description;
