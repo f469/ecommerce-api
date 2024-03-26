@@ -40,3 +40,8 @@ services:
         arguments:
             $itemProvider: '@api_platform.doctrine.orm.state.item_provider'
         tags: [ 'api_platform.state_provider' ]
+
+    App\API\State\Catalog\ProductProcessor:
+        arguments:
+            $persistProcessor: '@api_platform.doctrine.orm.state.persist_processor'
+        tags: [ 'api_platform.state_processor' ]
