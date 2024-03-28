@@ -5,3 +5,7 @@ resources:
       ApiPlatform\Metadata\Get:
         provider: App\API\State\Catalog\ProductProvider
         output: App\Domain\Catalog\ProductDTO
+      ApiPlatform\Metadata\Post:
+        processor: App\API\State\Catalog\ProductProcessor
+        output: App\Domain\Catalog\ProductDTO
+        input: App\Domain\Catalog\ProductDTO
