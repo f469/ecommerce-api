@@ -32,11 +32,11 @@ class ProductTest extends WebTestCase
             'POST',
             '/api/products',
             [
-                "reference" => "reference",
-                "name" => "name",
-                "description" => "description",
-                "price" => 30.00,
-                "vat" => 0.20
+                'reference' => 'reference',
+                'name' => 'name',
+                'description' => 'description',
+                'price' => 30.00,
+                'vat' => 0.20,
             ]);
         $this->assertResponseIsSuccessful();
 

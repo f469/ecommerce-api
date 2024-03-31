@@ -6,14 +6,15 @@ use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProcessorInterface;
 use App\Domain\Catalog\Product;
 use App\Domain\Catalog\ProductDTO;
-use App\Utils\UuidGenerator;
+use App\Domain\Id;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 class ProductProcessor implements ProcessorInterface
 {
     public function __construct(
         #[Autowire(service: 'api_platform.doctrine.orm.state.persist_processor')]
-        private ProcessorInterface $persistProcessor
+        private ProcessorInterface $persistProcessor,
+        private readonly Id $id,
     ) {
     }
 
@@ -23,8 +24,9 @@ class ProductProcessor implements ProcessorInterface
         array $uriVariables = [],
         array $context = []
     ): ProductDTO {
-        $product = new Product($data, new UuidGenerator());
+        $product = new Product($data, $this->id);
         $persisted = $this->persistProcessor->process($product, $operation, $uriVariables, $context);
+
         return $persisted->data();
     }
 }
