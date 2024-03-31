@@ -4,7 +4,7 @@
         <id name="id" type="string" />
         <field name="reference" type="string" />
         <field name="name" type="string" />
-        <field name="description" type="string" nullable="true"/>
+        <field name="description" type="text" nullable="true"/>
         <field name="price" type="amount" precision="10" scale="2"/>
         <field name="vat" type="amount" precision="10" scale="2"/>
     </entity>
