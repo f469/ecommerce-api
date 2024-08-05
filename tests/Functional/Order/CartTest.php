@@ -4,12 +4,12 @@ namespace App\Tests\Functional\Order;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class OrderTest extends WebTestCase
+class CartTest extends WebTestCase
 {
-    public function testOrder(): void
+    public function testCart(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/api/orders');
+        $client->request('GET', '/api/carts');
         $this->assertResponseIsSuccessful();
 
         $response = $client->getResponse();
@@ -21,7 +21,7 @@ class OrderTest extends WebTestCase
         );
         $id = $content['hydra:member'][0]['id'];
 
-        $client->request('GET', "/api/orders/{$id}");
+        $client->request('GET', "/api/carts/{$id}");
         $this->assertResponseIsSuccessful();
     }
 }

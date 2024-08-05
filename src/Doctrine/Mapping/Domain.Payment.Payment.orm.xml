@@ -1,9 +1,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
 
-    <entity name="App\Domain\Order\Cart">
+    <entity name="App\Domain\Payment\Payment" table="payment">
         <id name="id" type="string" />
-
-        <one-to-many field="lines" target-entity="App\Domain\Order\CartLine" mapped-by="cart"/>
+        <field name="date" type="datetime" />
     </entity>
 
 </doctrine-mapping>

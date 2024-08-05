@@ -20,6 +20,7 @@ class CartLine
         $this->id = $id->generate();
 
         $this->product = $product;
+
         $this->quantity = $quantity;
     }
 

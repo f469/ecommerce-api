@@ -33,7 +33,7 @@ class CartLineBuilder
     public function build(): CartLine
     {
         return new CartLine(
-            null === $this->product ? ProductBuilder::create()->build() : $this->product,
+            $this->product ?? ProductBuilder::create()->build(),
             $this->quantity,
             new UuidGenerator()
         );

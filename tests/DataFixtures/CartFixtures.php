@@ -2,18 +2,18 @@
 
 namespace App\Tests\DataFixtures;
 
-use App\Tests\Builder\OrderBuilder;
+use App\Tests\Builder\CartBuilder;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class OrderFixtures extends Fixture
+class CartFixtures extends Fixture
 {
     private const int DEFAULT = 30;
 
     public function load(ObjectManager $manager): void
     {
-        foreach ($this->generate() as $order) {
-            $manager->persist($order);
+        foreach ($this->generate() as $cart) {
+            $manager->persist($cart);
         }
 
         $manager->flush();
@@ -22,7 +22,7 @@ class OrderFixtures extends Fixture
     private function generate(): iterable
     {
         for ($i = 1; $i <= self::DEFAULT; ++$i) {
-            yield OrderBuilder::create()
+            yield CartBuilder::create()
                 ->build();
         }
     }

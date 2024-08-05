@@ -9,9 +9,9 @@ class Cart
 {
     private string $id;
     /**
-     * @var array<CartLine>
+     * @var iterable<CartLine>
      */
-    private array $lines;
+    private iterable $lines;
 
     public function __construct(
         Id $id
@@ -59,5 +59,10 @@ class Cart
         return new CartDTO(
             $this->id
         );
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
     }
 }
