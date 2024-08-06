@@ -22,10 +22,10 @@ class CartProvider implements ProviderInterface
         array $context = []
     ): ?CartDTO {
         /**
-         * @var Cart $cart
+         * @var Cart|null $cart
          */
         $cart = $this->itemProvider->provide($operation, $uriVariables, $context);
 
-        return null != $cart ? $cart->data() : null;
+        return $cart?->data();
     }
 }

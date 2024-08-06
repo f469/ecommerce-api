@@ -22,10 +22,10 @@ class OrderProvider implements ProviderInterface
         array $context = []
     ): ?OrderDTO {
         /**
-         * @var Order $order
+         * @var Order|null $order
          */
         $order = $this->itemProvider->provide($operation, $uriVariables, $context);
 
-        return null != $order ? $order->data() : null;
+        return $order?->data();
     }
 }

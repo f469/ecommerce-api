@@ -10,12 +10,12 @@ class Order
     private string $id;
     private Cart $cart;
     private \DateTime $date;
-    private Payment $payment;
+    private ?Payment $payment = null;
 
     public function __construct(
         Cart $cart,
         \DateTime $date,
-        Payment $payment,
+        ?Payment $payment,
         Id $id
     ) {
         $this->id = $id->generate();

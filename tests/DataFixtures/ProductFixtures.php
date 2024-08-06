@@ -8,7 +8,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class ProductFixtures extends Fixture
 {
-    private const DEFAULT = 30;
+    private const int DEFAULT = 30;
 
     public function load(ObjectManager $manager): void
     {
